@@ -1,0 +1,17 @@
+
+services:
+  database:
+    image: postgis/postgis:17-3.5
+    container_name: OnTime-database
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: OnTime
+      POSTGRES_PASSWORD: OnTime_dev_password
+      POSTGRES_DB: OnTime
+    ports:
+      - "5433:5432"
+    volumes:
+      - OnTime_data:/var/lib/postgresql/data
+
+volumes:
+  OnTime_data:

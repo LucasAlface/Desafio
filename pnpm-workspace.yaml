@@ -1,0 +1,15 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+allowBuilds:
+  esbuild: false
+permissions:
+  '@scarf/scarf':
+    build: true
+  prisma:
+    skills: true
+skills:
+  dirs:
+    - .agent/skills
+    - .agents/skills
+    - .github/skills
