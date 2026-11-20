@@ -1,6 +1,6 @@
 
 {
-  "name": "@OnTime/shared-types",
+  "name": "@ontime/shared-types",
   "version": "1.0.0",
   "private": true,
   "main": "./src/index.ts",

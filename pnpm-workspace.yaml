@@ -3,8 +3,14 @@ packages:
   - "packages/*"
 allowBuilds:
   esbuild: false
+  sharp: false
+  unrs-resolver: false
 permissions:
+  '@prisma/orm-postgres':
+    skills: true
   '@scarf/scarf':
+    build: true
+  bcrypt:
     build: true
   prisma:
     skills: true

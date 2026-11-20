@@ -1,21 +1,35 @@
 // use prisma-8
+// Contract inferred from the live database schema. Edit as needed, then run `prisma contract emit`.
 
-model User {
-  id        Int                @id @default(autoincrement())
-  email     String             @unique
-  username  String?
-  name      String?
-  posts     Post[]
-  createdAt DateTime           @default(now()) @onCreate(now())
-  updatedAt temporal.UpdatedAt
+model SpatialRefSys {
+  srid      Int                                     @id(map: "spatial_ref_sys_pkey")
+  authName  String(storage: varchar, length: 256)?  @map("auth_name")
+  authSrid  Int?                                    @map("auth_srid")
+  srtext    String(storage: varchar, length: 2048)?
+  proj4text String(storage: varchar, length: 2048)?
+
+  @@check(expression: sql`((srid > 0) AND (srid <= 998999))`, map: "spatial_ref_sys_srid_check")
+  @@map("spatial_ref_sys")
 }
 
-model Post {
-  id        Int                @id @default(autoincrement())
-  title     String
-  content   String?
-  author    User               @relation(fields: [authorId], references: [id])
-  authorId  Int
-  createdAt DateTime           @default(now()) @onCreate(now())
-  updatedAt temporal.UpdatedAt
+extension fuzzystrmatch {
+}
+
+namespace tiger {
+  extension postgis_tiger_geocoder {
+  }
+}
+
+namespace topology {
+  extension postgis_topology {
+  }
+}
+
+model User {
+  id           Int                @id @default(autoincrement())
+  email        String             @unique
+  name         String?
+  passwordHash String
+  createdAt    DateTime           @default(now()) @onCreate(now())
+  updatedAt    temporal.UpdatedAt
 }

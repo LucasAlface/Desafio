@@ -1,13 +1,13 @@
 
 {
-  "name": "OnTime",
+  "name": "ontime",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev:web": "pnpm --filter @OnTime/web dev",
-    "dev:api": "pnpm --filter @OnTime/api start:dev",
-    "build:web": "pnpm --filter @OnTime/web build",
-    "build:api": "pnpm --filter @OnTime/api build",
+    "dev:web": "pnpm --filter @ontime/web dev",
+    "dev:api": "pnpm --filter @ontime/api start:dev",
+    "build:web": "pnpm --filter @ontime/web build",
+    "build:api": "pnpm --filter @ontime/api build",
     "dev": "pnpm dev:web"
   },
   "devDependencies": {

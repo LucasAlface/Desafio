@@ -1,12 +1,15 @@
 
 import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module.js";
+import { AppModule, ObserveInstrument } from "./app.module.js";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    instrument: ObserveInstrument
+  });
 
   app.setGlobalPrefix("api/v1");
+  app.enableShutdownHooks();
 
   app.enableCors({
     origin: process.env.WEB_ORIGIN ?? "http://localhost:3000",

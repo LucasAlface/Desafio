@@ -1,15 +1,14 @@
-
 import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Transit",
-    short_name: "Transit",
+    name: "OnTime",
+    short_name: "OT",
     description: "Acompanha os transportes públicos em Portugal.",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#111827",
+    background_color: "#f1f7f8",
+    theme_color: "#075b7d",
     orientation: "portrait",
     icons: [
       {
